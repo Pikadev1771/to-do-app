@@ -1,12 +1,60 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { CreateItem } from '../components/CreateItem';
+import { CreateItem } from './CreateItem';
+
+export const CreateItemModal = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const ModalHandler = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <>
+      <ModalContainer>
+        <ModalBtnContainer>
+          <ModalBtn onClick={ModalHandler}>
+            {isOpen ? <>&times;</> : <>+</>}
+          </ModalBtn>
+        </ModalBtnContainer>
+        {isOpen ? (
+          <ModalBackdrop onClick={ModalHandler}>
+            <ModalView onClick={(event) => event.stopPropagation()}>
+              <CloseBtn onClick={ModalHandler}>&times;</CloseBtn>
+              <CreateItem />
+            </ModalView>
+          </ModalBackdrop>
+        ) : null}
+      </ModalContainer>
+    </>
+  );
+};
 
 export const ModalContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+`;
+
+export const ModalBtnContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 30rem;
+  margin-top: 3rem;
+`;
+
+export const ModalBtn = styled.button`
+  cursor: grab; // 🌟
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+
+  border: none;
+  color: white;
+  background-color: #3bba8d;
+  border-radius: 0.5rem;
 `;
 
 export const ModalBackdrop = styled.div`
@@ -20,16 +68,6 @@ export const ModalBackdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: top;
-`;
-
-export const ModalBtn = styled.button`
-  background-color: var(--coz-purple-600);
-  text-decoration: none;
-  border: none;
-  padding: 20px;
-  color: white;
-  border-radius: 30px;
-  cursor: grab; // 🌟
 `;
 
 export const ModalView = styled.div.attrs((props) => ({
@@ -54,36 +92,4 @@ export const ModalView = styled.div.attrs((props) => ({
 export const CloseBtn = styled.button`
   margin: 15px;
   padding: 5px 10px;
-`;
-
-export const Modal = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openModalHandler = () => {
-    setIsOpen(!isOpen);
-  };
-
-  return (
-    <>
-      <ModalContainer>
-        <ModalBtn onClick={openModalHandler}>
-          {isOpen ? 'Opened!' : <CreateBtn>+</CreateBtn>}
-        </ModalBtn>
-        {isOpen ? (
-          <ModalBackdrop onClick={openModalHandler}>
-            <ModalView onClick={(event) => event.stopPropagation()}>
-              <CloseBtn onClick={openModalHandler}>&times;</CloseBtn>
-              <CreateItem />
-            </ModalView>
-          </ModalBackdrop>
-        ) : null}
-      </ModalContainer>
-    </>
-  );
-};
-
-const CreateBtn = styled.button`
-  width: 3rem;
-  height: 3rem;
-  font-size: 2rem;
 `;

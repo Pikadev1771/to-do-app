@@ -5,6 +5,9 @@ import { useState, useEffect } from 'react';
 import { deleteItem } from '../actions/actions';
 import useFetch from '../Hooks/useFetch';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+
 export default function TodoList() {
   const navigate = useNavigate();
 
@@ -39,33 +42,47 @@ export default function TodoList() {
       {isLoading
         ? '로딩 중...'
         : todoData.map((item) => (
-            <li key={item.id}>
+            <Item key={item.id}>
               <Title>{item.title}</Title>
-              <DeleteBtn onClick={() => handleDelete(item.id)}>❌</DeleteBtn>
-            </li>
+              <DeleteBtn onClick={() => handleDelete(item.id)}>
+                <FontAwesomeIcon icon={faTrashCan} />
+              </DeleteBtn>
+            </Item>
           ))}
     </TodoListContainer>
   );
 }
 
 const TodoListContainer = styled.ul`
-  font-size: 1.5rem;
-  border: 1px solid red;
   padding-left: 0px;
   list-style: none;
+`;
 
-  li {
-    margin: 0.5rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+const Item = styled.li`
+  width: 30rem;
+  height: 3rem;
+  margin: 0.5rem 0;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid #3bba8d;
+  border-radius: 1rem;
+  color: #6c6d6d;
 `;
 
 const Title = styled.div`
-  width: 10rem;
+  font-size: 1.4rem;
 `;
 
 const DeleteBtn = styled.button`
   width: 2rem;
+  height: 2rem;
+  /* border: 3px solid #3bba8d;
+  border-radius: 0.3rem;
+  background-color: #3bba8d; */
+  border: none;
+  font-size: 1rem;
+  color: #6c6d6d;
+  background-color: transparent;
 `;

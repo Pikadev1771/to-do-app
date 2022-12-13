@@ -4,11 +4,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteItem } from '../actions/actions';
-import { Modal } from '../components/Modal';
-
+import { CreateItemModal } from '../components/CreateItemModal';
 import TodoList from '../components/TodoList';
-
-import CreateItem from '../components/CreateItem';
 
 export default function Main() {
   // const [todoData, setTodoData] = useState([]); // 서버 데이터 사용할 경우 필요
@@ -29,8 +26,7 @@ export default function Main() {
 
   return (
     <MainContainer>
-      {/* <CreateItem /> */}
-      <Modal />
+      <CreateItemModal />
       <TodoList />
     </MainContainer>
   );
@@ -40,4 +36,5 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: 2px solid red; */
 `;
