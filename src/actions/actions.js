@@ -1,9 +1,29 @@
-export const DELETE = 'DELETE'; // 1) type 문자열 변수화 하기
+export const ADD = 'ADD';
+export const CHECK = 'CHECK';
+export const DELETE = 'DELETE';
 
-export const deleteItem = (num) => {
-  // 2) 액션 또는 액션 생성자 만들기
+export const addItem = (id, title, priority) => {
+  return {
+    type: ADD,
+    payload: {
+      id: id,
+      title: title,
+      checked: false,
+      priority: priority,
+    },
+  };
+};
+
+export const checkItem = (id) => {
+  return {
+    type: CHECK,
+    payload: id,
+  };
+};
+
+export const deleteItem = (id) => {
   return {
     type: DELETE,
-    payload: num,
+    payload: id,
   };
 };

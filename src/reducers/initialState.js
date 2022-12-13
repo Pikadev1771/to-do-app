@@ -1,3 +1,5 @@
+// Redux Store에서 사용할 초기 데이터
+
 export const initialState = {
   todos: [
     {

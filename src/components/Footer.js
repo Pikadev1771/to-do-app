@@ -7,7 +7,7 @@ export default function Footer(props) {
   return (
     <FooterContainer>
       <FooterText>
-        <h4>🔥 Copyright 2022. pikadev1771All rights served</h4>
+        <h4>🔥 Copyright 2022. pikadev1771 All rights served</h4>
       </FooterText>
     </FooterContainer>
   );
