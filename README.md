@@ -13,4 +13,4 @@ React와 json-server를 이용해 To-do앱의 CRUD 기능을 구현했습니다.
 
 ## 구현 화면
 
-![박경현_Todo App](https://user-images.githubusercontent.com/111509842/207536009-c338618d-204f-470b-984c-57ae40c944a8.gif)
+![박경현_todo_app](https://user-images.githubusercontent.com/111509842/207584825-731a6e55-09e7-4da5-b5a9-d9d3f7a05a64.gif)
