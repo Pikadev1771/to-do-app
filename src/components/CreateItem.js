@@ -43,21 +43,51 @@ export const CreateItem = () => {
 
   return (
     <CreateItemContainer>
-      <h2>Add a New Blog</h2>
-      <form onSubmit={handleSubmit}>
-        <input
+      <NewItemForm onSubmit={handleSubmit}>
+        <NewItemInput
           type="text"
           required
           {...titleBind}
           placeholder="무엇을 할까요?"
         />
-        <button>등록</button>
-      </form>
+        <SubmitBtn>등록</SubmitBtn>
+      </NewItemForm>
     </CreateItemContainer>
   );
 };
 
 const CreateItemContainer = styled.div`
   width: 100%;
-  border: 1px solid red;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const NewItemForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const NewItemInput = styled.input`
+  width: 25rem;
+  height: 4rem;
+  border: 2px solid #3bba8d;
+  font-size: 1.5rem;
+  margin: 3rem 0 2rem 0;
+  padding: 1rem;
+  border-radius: 1rem;
+`;
+
+const SubmitBtn = styled.button`
+  cursor: grab; // 🌟
+  width: 10rem;
+  height: 2.5rem;
+  font-size: 1rem;
+
+  border: none;
+  color: white;
+  background-color: #3bba8d;
+  border-radius: 0.55rem;
 `;

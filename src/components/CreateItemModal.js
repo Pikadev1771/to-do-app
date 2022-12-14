@@ -20,7 +20,9 @@ export const CreateItemModal = () => {
         {isOpen ? (
           <ModalBackdrop onClick={ModalHandler}>
             <ModalView onClick={(event) => event.stopPropagation()}>
-              <CloseBtn onClick={ModalHandler}>&times;</CloseBtn>
+              <CloseBtnContainer>
+                <CloseBtn onClick={ModalHandler}>&times;</CloseBtn>
+              </CloseBtnContainer>
               <CreateItem />
             </ModalView>
           </ModalBackdrop>
@@ -54,7 +56,7 @@ export const ModalBtn = styled.button`
   border: none;
   color: white;
   background-color: #3bba8d;
-  border-radius: 0.5rem;
+  border-radius: 0.55rem;
 `;
 
 export const ModalBackdrop = styled.div`
@@ -70,26 +72,39 @@ export const ModalBackdrop = styled.div`
   align-items: top;
 `;
 
+export const CloseBtnContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+`;
+
+export const CloseBtn = styled.button`
+  cursor: grab; // 🌟
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+
+  border: none;
+  color: white;
+  background-color: #3bba8d;
+  border-radius: 0.5rem;
+`;
+
 export const ModalView = styled.div.attrs((props) => ({
   // attrs 메소드를 이용해서 아래와 같이 div 엘리먼트에 속성을 추가할 수 있습니다.
   role: 'dialog',
 }))`
   background-color: white;
   width: 500px;
-  height: 200px;
+  height: 300px;
   border-radius: 10px;
   margin-top: 12rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   > p.modalText {
     font-size: 25px;
     color: #5c5c5c;
     margin: 20px;
   }
-`;
-
-export const CloseBtn = styled.button`
-  margin: 15px;
-  padding: 5px 10px;
 `;

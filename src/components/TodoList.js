@@ -11,8 +11,14 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 export default function TodoList() {
   const navigate = useNavigate();
 
+  // 데이터 받아오기
   const { data: todoData, isLoading } = useFetch('http://localhost:3001/todos');
 
+  console.log(todoData);
+
+  // 각 아이템 데이터
+
+  // 삭제
   const handleDelete = (id) => {
     // // 🦄 redux
     // dispatch(deleteItem(id));
@@ -37,13 +43,49 @@ export default function TodoList() {
     console.log('delete!');
   };
 
+  const handleCheckChange = (checked, id) => {
+    fetch(`http://localhost:3001/todos/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        checked: checked,
+      }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw Error('could not fetch the data for that resource');
+        }
+        return res.json();
+      })
+      .then(() => {
+        // navigate('/');
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.error('Error', err);
+      });
+    console.log(checked, id);
+    console.log('check!');
+  };
+
   return (
     <TodoListContainer>
       {isLoading
         ? '로딩 중...'
         : todoData.map((item) => (
             <Item key={item.id}>
-              <Title>{item.title}</Title>
+              <CheckBoxAndTitleContainer>
+                <CheckBox
+                  type="checkbox"
+                  checked={item.checked}
+                  onChange={(e) => {
+                    handleCheckChange(e.target.checked, item.id);
+                  }}
+                ></CheckBox>
+                <Title isChecked={item.checked}>{item.title}</Title>
+              </CheckBoxAndTitleContainer>
               <DeleteBtn onClick={() => handleDelete(item.id)}>
                 <FontAwesomeIcon icon={faTrashCan} />
               </DeleteBtn>
@@ -71,16 +113,24 @@ const Item = styled.li`
   color: #6c6d6d;
 `;
 
+const CheckBoxAndTitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const CheckBox = styled.input``;
+
 const Title = styled.div`
+  margin-left: 0.6rem;
   font-size: 1.4rem;
+  text-decoration: ${(props) => (props.isChecked ? 'line-through' : 'none')};
+  color: ${(props) => (props.isChecked ? '#b9bfbc' : '#6c6d6d')};
 `;
 
 const DeleteBtn = styled.button`
   width: 2rem;
   height: 2rem;
-  /* border: 3px solid #3bba8d;
-  border-radius: 0.3rem;
-  background-color: #3bba8d; */
   border: none;
   font-size: 1rem;
   color: #6c6d6d;

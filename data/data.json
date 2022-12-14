@@ -13,22 +13,12 @@
     {
       "id": 4,
       "title": "코플릿 풀기",
-      "checked": false
-    },
-    {
-      "title": "운동하기!",
-      "checked": false,
-      "id": 9
+      "checked": true
     },
     {
       "title": "산책하기",
       "checked": false,
-      "id": 10
-    },
-    {
-      "title": "냠냠",
-      "checked": false,
-      "id": 11
+      "id": 7
     }
   ]
 }
