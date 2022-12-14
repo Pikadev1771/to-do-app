@@ -1,11 +1,6 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "기상하기",
-      "checked": false
-    },
-    {
       "id": 2,
       "title": "고양이 밥주기",
       "checked": true
@@ -16,9 +11,9 @@
       "checked": true
     },
     {
-      "title": "자전거 타기",
+      "title": "산책하기",
       "checked": false,
-      "id": 8
+      "id": 9
     }
   ]
 }
