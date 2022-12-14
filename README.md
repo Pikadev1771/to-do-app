@@ -1,6 +1,6 @@
 # To Do App
 
-React와 redux-toolkit, json-server를 이용해 To-do앱의 CRUD 기능을 구현했습니다.
+React와 json-server를 이용해 To-do앱의 CRUD 기능을 구현했습니다.
 
 ## Stack
 
@@ -9,7 +9,7 @@ React와 redux-toolkit, json-server를 이용해 To-do앱의 CRUD 기능을 구�
 - json-server
 - Figma
 - FontAwsome
-- Redux-toolkit
+- Redux-toolkit(작업 중)
 
 ## 구현 화면
 
