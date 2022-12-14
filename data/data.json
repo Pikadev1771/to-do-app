@@ -8,7 +8,7 @@
     {
       "id": 2,
       "title": "고양이 밥주기",
-      "checked": false
+      "checked": true
     },
     {
       "id": 4,
@@ -16,9 +16,9 @@
       "checked": true
     },
     {
-      "title": "산책하기",
+      "title": "자전거 타기",
       "checked": false,
-      "id": 7
+      "id": 8
     }
   ]
 }

@@ -113,19 +113,34 @@ const Item = styled.li`
   color: #6c6d6d;
 `;
 
-const CheckBoxAndTitleContainer = styled.div`
+const CheckBoxAndTitleContainer = styled.label`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-const CheckBox = styled.input``;
+const CheckBox = styled.input`
+  appearance: none;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 1.5px solid #939393;
+  border-radius: 0.35rem;
+
+  &:checked {
+    border-color: transparent;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+    background-size: 100% 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-color: #3bba8d;
+  }
+`;
 
 const Title = styled.div`
-  margin-left: 0.6rem;
+  margin-left: 0.8rem;
   font-size: 1.4rem;
   text-decoration: ${(props) => (props.isChecked ? 'line-through' : 'none')};
-  color: ${(props) => (props.isChecked ? '#b9bfbc' : '#6c6d6d')};
+  color: ${(props) => (props.isChecked ? '#b9bfbc' : '#939393')};
 `;
 
 const DeleteBtn = styled.button`
@@ -133,6 +148,6 @@ const DeleteBtn = styled.button`
   height: 2rem;
   border: none;
   font-size: 1rem;
-  color: #6c6d6d;
+  color: #939393;
   background-color: transparent;
 `;
